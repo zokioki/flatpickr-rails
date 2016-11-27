@@ -1,5 +1,7 @@
 # flatpickr
 
+[![Gem Version](https://badge.fury.io/rb/flatpickr.svg)](https://badge.fury.io/rb/flatpickr)
+
 [Flatpickr](https://github.com/chmln/flatpickr) is a lightweight and powerful datetimepicker with no dependencies. This gem packages flatpickr's assets for drop-in use in Rails applications.
 
 ## Installation
