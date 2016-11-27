@@ -1,6 +1,6 @@
-# Flatpickr
+# flatpickr
 
-[Flatpickr](https://github.com/chmln/flatpickr) is a lightweight and powerful datetimepicker with no dependencies. This gem packages Flatpickr's assets for drop-in use in Rails applications.
+[Flatpickr](https://github.com/chmln/flatpickr) is a lightweight and powerful datetimepicker with no dependencies. This gem packages flatpickr's assets for drop-in use in Rails applications.
 
 ## Installation
 
@@ -34,7 +34,7 @@ And in your application.js:
 //= require flatpickr/l10n/da
 ```
 
-To initialize Flatpickr:
+To initialize flatpickr:
 
 ```js
 flatpickr('.your-selector');
@@ -43,7 +43,7 @@ flatpickr('.your-selector');
 $('.your-selector').flatpickr();
 ```
 
-See [Flatpickr's docs](https://chmln.github.io/flatpickr/) for configuration and usage info.
+See [flatpickr's docs](https://chmln.github.io/flatpickr/) for configuration and usage info.
 
 ## License
 
