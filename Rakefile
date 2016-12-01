@@ -10,10 +10,10 @@ namespace :flatpickr do
   namespace :assets do
     desc 'Update Flatpickr\'s assets.'
     task update: :clean do
-      version = Flatpickr::VERSION.sub(/.\d+$/, '')
+      version = ARGV[1] || "v#{Flatpickr::VERSION.sub(/.\d+$/, '')}"
 
       sh 'git clone git@github.com:chmln/flatpickr.git flatpickr_source'
-      sh "cd flatpickr_source && git checkout tags/v#{version}"
+      sh "cd flatpickr_source && git checkout tags/#{version}"
 
       sh 'cp flatpickr_source/dist/flatpickr.js vendor/assets/javascripts/flatpickr.js'
       sh 'cp -R flatpickr_source/dist/l10n/ vendor/assets/javascripts/flatpickr/l10n/'

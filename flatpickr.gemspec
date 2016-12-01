@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['zoran1991@gmail.com']
 
   spec.summary       = %q{Flatpickr packaged for use in Rails projects.}
-  spec.homepage      = 'https://github.com/zokioki/flatpickr_rails'
+  spec.homepage      = 'https://github.com/zokioki/flatpickr-rails'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
