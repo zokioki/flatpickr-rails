@@ -1,3 +1,3 @@
 module Flatpickr
-  VERSION = '2.3.7.0'
+  VERSION = '2.4.0.0'
 end
