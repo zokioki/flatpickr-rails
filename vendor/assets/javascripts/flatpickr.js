@@ -2,7 +2,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/*! flatpickr v2.5.9, @license MIT */
+/*! flatpickr v2.6.0, @license MIT */
 function Flatpickr(element, config) {
 	var self = this;
 
@@ -1191,7 +1191,7 @@ function Flatpickr(element, config) {
 			var pluginConf = self.config.plugins[_i2](self) || {};
 			for (var key in pluginConf) {
 
-				if ((self.config[key] || ~hooks.indexOf(key)) instanceof Array) {
+				if (self.config[key] instanceof Array || ~hooks.indexOf(key)) {
 					self.config[key] = arrayify(pluginConf[key]).map(bindToInstance).concat(self.config[key]);
 				} else if (typeof userConfig[key] === "undefined") self.config[key] = pluginConf[key];
 			}
