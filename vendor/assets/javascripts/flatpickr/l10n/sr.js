@@ -1,19 +1,68 @@
-/* Serbian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.sr = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.sr = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.sr.weekdays = {
-	shorthand: ["Ned", "Pon", "Uto", "Sre", "Čet", "Pet", "Sub", "Ned"],
-	longhand: ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota", "Nedelja"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Serbian = {
+        weekdays: {
+            shorthand: ["Ned", "Pon", "Uto", "Sre", "Čet", "Pet", "Sub"],
+            longhand: [
+                "Nedelja",
+                "Ponedeljak",
+                "Utorak",
+                "Sreda",
+                "Četvrtak",
+                "Petak",
+                "Subota",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Maj",
+                "Jun",
+                "Jul",
+                "Avg",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dec",
+            ],
+            longhand: [
+                "Januar",
+                "Februar",
+                "Mart",
+                "April",
+                "Maj",
+                "Jun",
+                "Jul",
+                "Avgust",
+                "Septembar",
+                "Oktobar",
+                "Novembar",
+                "Decembar",
+            ],
+        },
+        firstDayOfWeek: 1,
+        weekAbbreviation: "Ned.",
+        rangeSeparator: " do ",
+    };
+    fp.l10ns.sr = Serbian;
+    var sr = fp.l10ns;
 
-flatpickr.l10ns.sr.months = {
-	shorthand: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Avg", "Sep", "Okt", "Nov", "Dec"],
-	longhand: ["Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"]
-};
+    exports.Serbian = Serbian;
+    exports.default = sr;
 
-flatpickr.l10ns.sr.firstDayOfWeek = 1;
-flatpickr.l10ns.sr.weekAbbreviation = "Ned.";
-flatpickr.l10ns.sr.rangeSeparator = " do ";
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

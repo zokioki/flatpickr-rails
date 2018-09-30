@@ -1,20 +1,69 @@
-/* Finnish locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.fi = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.fi = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.fi.firstDayOfWeek = 1;
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Finnish = {
+        firstDayOfWeek: 1,
+        weekdays: {
+            shorthand: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"],
+            longhand: [
+                "Sunnuntai",
+                "Maanantai",
+                "Tiistai",
+                "Keskiviikko",
+                "Torstai",
+                "Perjantai",
+                "Lauantai",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Tammi",
+                "Helmi",
+                "Maalis",
+                "Huhti",
+                "Touko",
+                "Kesä",
+                "Heinä",
+                "Elo",
+                "Syys",
+                "Loka",
+                "Marras",
+                "Joulu",
+            ],
+            longhand: [
+                "Tammikuu",
+                "Helmikuu",
+                "Maaliskuu",
+                "Huhtikuu",
+                "Toukokuu",
+                "Kesäkuu",
+                "Heinäkuu",
+                "Elokuu",
+                "Syyskuu",
+                "Lokakuu",
+                "Marraskuu",
+                "Joulukuu",
+            ],
+        },
+        ordinal: () => {
+            return ".";
+        },
+    };
+    fp.l10ns.fi = Finnish;
+    var fi = fp.l10ns;
 
-flatpickr.l10ns.fi.weekdays = {
-	shorthand: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"],
-	longhand: ["Sunnuntai", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai"]
-};
+    exports.Finnish = Finnish;
+    exports.default = fi;
 
-flatpickr.l10ns.fi.months = {
-	shorthand: ["Tammi", "Helmi", "Maalis", "Huhti", "Touko", "Kesä", "Heinä", "Elo", "Syys", "Loka", "Marras", "Joulu"],
-	longhand: ["Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu", "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"]
-};
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.fi.ordinal = function () {
-	return ".";
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

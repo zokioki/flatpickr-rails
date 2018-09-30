@@ -1,24 +1,72 @@
-/* Thai locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.th = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.th = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.th.weekdays = {
-	shorthand: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-	longhand: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Thai = {
+        weekdays: {
+            shorthand: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            longhand: [
+                "อาทิตย์",
+                "จันทร์",
+                "อังคาร",
+                "พุธ",
+                "พฤหัสบดี",
+                "ศุกร์",
+                "เสาร์",
+            ],
+        },
+        months: {
+            shorthand: [
+                "ม.ค.",
+                "ก.พ.",
+                "มี.ค.",
+                "เม.ย.",
+                "พ.ค.",
+                "มิ.ย.",
+                "ก.ค.",
+                "ส.ค.",
+                "ก.ย.",
+                "ต.ค.",
+                "พ.ย.",
+                "ธ.ค.",
+            ],
+            longhand: [
+                "มกราคม",
+                "กุมภาพันธ์",
+                "มีนาคม",
+                "เมษายน",
+                "พฤษภาคม",
+                "มิถุนายน",
+                "กรกฎาคม",
+                "สิงหาคม",
+                "กันยายน",
+                "ตุลาคม",
+                "พฤศจิกายน",
+                "ธันวาคม",
+            ],
+        },
+        firstDayOfWeek: 1,
+        rangeSeparator: " ถึง ",
+        scrollTitle: "เลื่อนเพื่อเพิ่มหรือลด",
+        toggleTitle: "คลิกเพื่อเปลี่ยน",
+        ordinal: () => {
+            return "";
+        },
+    };
+    fp.l10ns.th = Thai;
+    var th = fp.l10ns;
 
-flatpickr.l10ns.th.months = {
-	shorthand: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
-	longhand: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
-};
+    exports.Thai = Thai;
+    exports.default = th;
 
-flatpickr.l10ns.th.firstDayOfWeek = 1;
-flatpickr.l10ns.th.rangeSeparator = " ถึง ";
-flatpickr.l10ns.th.scrollTitle = "เลื่อนเพื่อเพิ่มหรือลด";
-flatpickr.l10ns.th.toggleTitle = "คลิกเพื่อเปลี่ยน";
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.th.ordinal = function () {
-	return "";
-};
-
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

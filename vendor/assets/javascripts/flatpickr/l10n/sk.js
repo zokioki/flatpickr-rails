@@ -1,21 +1,70 @@
-/* Slovak locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.sk = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.sk = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.sk.weekdays = {
-	shorthand: ["Ned", "Pon", "Ut", "Str", "Štv", "Pia", "Sob"],
-	longhand: ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok", "Sobota"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Slovak = {
+        weekdays: {
+            shorthand: ["Ned", "Pon", "Ut", "Str", "Štv", "Pia", "Sob"],
+            longhand: [
+                "Nedeľa",
+                "Pondelok",
+                "Utorok",
+                "Streda",
+                "Štvrtok",
+                "Piatok",
+                "Sobota",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Máj",
+                "Jún",
+                "Júl",
+                "Aug",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dec",
+            ],
+            longhand: [
+                "Január",
+                "Február",
+                "Marec",
+                "Apríl",
+                "Máj",
+                "Jún",
+                "Júl",
+                "August",
+                "September",
+                "Október",
+                "November",
+                "December",
+            ],
+        },
+        firstDayOfWeek: 1,
+        rangeSeparator: " do ",
+        ordinal: function () {
+            return ".";
+        },
+    };
+    fp.l10ns.sk = Slovak;
+    var sk = fp.l10ns;
 
-flatpickr.l10ns.sk.months = {
-	shorthand: ["Jan", "Feb", "Mar", "Apr", "Máj", "Jún", "Júl", "Aug", "Sep", "Okt", "Nov", "Dec"],
-	longhand: ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"]
-};
+    exports.Slovak = Slovak;
+    exports.default = sk;
 
-flatpickr.l10ns.sk.firstDayOfWeek = 1;
-flatpickr.l10ns.sk.rangeSeparator = " do ";
-flatpickr.l10ns.sk.ordinal = function () {
-	return ".";
-};
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

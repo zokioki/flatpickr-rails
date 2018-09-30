@@ -1,18 +1,71 @@
-/* Danish locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.da = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.da = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.da.weekdays = {
-	shorthand: ["Søn", "Man", "Tir", "Ons", "Tors", "Fre", "Lør"],
-	longhand: ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Danish = {
+        weekdays: {
+            shorthand: ["søn", "man", "tir", "ons", "tors", "fre", "lør"],
+            longhand: [
+                "søndag",
+                "mandag",
+                "tirsdag",
+                "onsdag",
+                "torsdag",
+                "fredag",
+                "lørdag",
+            ],
+        },
+        months: {
+            shorthand: [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "maj",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "okt",
+                "nov",
+                "dec",
+            ],
+            longhand: [
+                "januar",
+                "februar",
+                "marts",
+                "april",
+                "maj",
+                "juni",
+                "juli",
+                "august",
+                "september",
+                "oktober",
+                "november",
+                "december",
+            ],
+        },
+        ordinal: () => {
+            return ".";
+        },
+        firstDayOfWeek: 1,
+        rangeSeparator: " til ",
+        weekAbbreviation: "uge",
+    };
+    fp.l10ns.da = Danish;
+    var da = fp.l10ns;
 
-flatpickr.l10ns.da.months = {
-	shorthand: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
-	longhand: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]
-};
+    exports.Danish = Danish;
+    exports.default = da;
 
-flatpickr.l10ns.da.ordinal = function () {
-	return ".";
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+})));

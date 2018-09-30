@@ -1,17 +1,66 @@
-/* Croatian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.hr = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.hr = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.hr.firstDayOfWeek = 1;
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Croatian = {
+        firstDayOfWeek: 1,
+        weekdays: {
+            shorthand: ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"],
+            longhand: [
+                "Nedjelja",
+                "Ponedjeljak",
+                "Utorak",
+                "Srijeda",
+                "Četvrtak",
+                "Petak",
+                "Subota",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Sij",
+                "Velj",
+                "Ožu",
+                "Tra",
+                "Svi",
+                "Lip",
+                "Srp",
+                "Kol",
+                "Ruj",
+                "Lis",
+                "Stu",
+                "Pro",
+            ],
+            longhand: [
+                "Siječanj",
+                "Veljača",
+                "Ožujak",
+                "Travanj",
+                "Svibanj",
+                "Lipanj",
+                "Srpanj",
+                "Kolovoz",
+                "Rujan",
+                "Listopad",
+                "Studeni",
+                "Prosinac",
+            ],
+        },
+    };
+    fp.l10ns.hr = Croatian;
+    var hr = fp.l10ns;
 
-flatpickr.l10ns.hr.weekdays = {
-	shorthand: ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"],
-	longhand: ["Nedjelja", "Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota"]
-};
+    exports.Croatian = Croatian;
+    exports.default = hr;
 
-flatpickr.l10ns.hr.months = {
-	shorthand: ["Sij", "Velj", "Ožu", "Tra", "Svi", "Lip", "Srp", "Kol", "Ruj", "Lis", "Stu", "Pro"],
-	longhand: ["Siječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"]
-};
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

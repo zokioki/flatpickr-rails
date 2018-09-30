@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Flatpickr
-  VERSION = '3.0.7.0'
+  VERSION = '4.5.2.0'
 end
