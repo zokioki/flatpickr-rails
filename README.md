@@ -31,9 +31,6 @@ And in your application.js:
 
 ```js
 //= require flatpickr
-//
-// Locales can be included as well:
-//= require flatpickr/l10n/da
 
 document.addEventListener('DOMContentLoaded', function() {
   flatpickr('.your-selector');
