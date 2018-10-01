@@ -37,9 +37,6 @@ And in your application.js:
 
 document.addEventListener('DOMContentLoaded', function() {
   flatpickr('.your-selector');
-
-  // if using jQuery
-  // $('.your-selector').flatpickr();
 })
 ```
 
