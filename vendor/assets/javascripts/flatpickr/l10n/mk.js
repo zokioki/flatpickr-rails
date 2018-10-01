@@ -1,19 +1,68 @@
-/* Macedonian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.mk = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.mk = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.mk.weekdays = {
-	shorthand: ["Не", "По", "Вт", "Ср", "Че", "Пе", "Са", "Не"],
-	longhand: ["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота", "Недела"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Macedonian = {
+        weekdays: {
+            shorthand: ["Не", "По", "Вт", "Ср", "Че", "Пе", "Са"],
+            longhand: [
+                "Недела",
+                "Понеделник",
+                "Вторник",
+                "Среда",
+                "Четврток",
+                "Петок",
+                "Сабота",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Јан",
+                "Фев",
+                "Мар",
+                "Апр",
+                "Мај",
+                "Јун",
+                "Јул",
+                "Авг",
+                "Сеп",
+                "Окт",
+                "Ное",
+                "Дек",
+            ],
+            longhand: [
+                "Јануари",
+                "Февруари",
+                "Март",
+                "Април",
+                "Мај",
+                "Јуни",
+                "Јули",
+                "Август",
+                "Септември",
+                "Октомври",
+                "Ноември",
+                "Декември",
+            ],
+        },
+        firstDayOfWeek: 1,
+        weekAbbreviation: "Нед.",
+        rangeSeparator: " до ",
+    };
+    fp.l10ns.mk = Macedonian;
+    var mk = fp.l10ns;
 
-flatpickr.l10ns.mk.months = {
-	shorthand: ["Јан", "Фев", "Мар", "Апр", "Мај", "Јун", "Јул", "Авг", "Сеп", "Окт", "Ное", "Дек"],
-	longhand: ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"]
-};
+    exports.Macedonian = Macedonian;
+    exports.default = mk;
 
-flatpickr.l10ns.mk.firstDayOfWeek = 1;
-flatpickr.l10ns.mk.weekAbbreviation = "Нед.";
-flatpickr.l10ns.mk.rangeSeparator = " до ";
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

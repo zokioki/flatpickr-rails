@@ -1,15 +1,65 @@
-/* Sinhala locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.si = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.si = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.si.weekdays = {
-	shorthand: ["ඉ", "ස", "අ", "බ", "බ්‍ර", "සි", "සෙ"],
-	longhand: ["ඉරිදා", "සඳුදා", "අඟහරුවාදා", "බදාදා", "බ්‍රහස්පතින්දා", "සිකුරාදා", "සෙනසුරාදා"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Sinhala = {
+        weekdays: {
+            shorthand: ["ඉ", "ස", "අ", "බ", "බ්‍ර", "සි", "සෙ"],
+            longhand: [
+                "ඉරිදා",
+                "සඳුදා",
+                "අඟහරුවාදා",
+                "බදාදා",
+                "බ්‍රහස්පතින්දා",
+                "සිකුරාදා",
+                "සෙනසුරාදා",
+            ],
+        },
+        months: {
+            shorthand: [
+                "ජන",
+                "පෙබ",
+                "මාර්",
+                "අප්‍රේ",
+                "මැයි",
+                "ජුනි",
+                "ජූලි",
+                "අගෝ",
+                "සැප්",
+                "ඔක්",
+                "නොවැ",
+                "දෙසැ",
+            ],
+            longhand: [
+                "ජනවාරි",
+                "පෙබරවාරි",
+                "මාර්තු",
+                "අප්‍රේල්",
+                "මැයි",
+                "ජුනි",
+                "ජූලි",
+                "අගෝස්තු",
+                "සැප්තැම්බර්",
+                "ඔක්තෝබර්",
+                "නොවැම්බර්",
+                "දෙසැම්බර්",
+            ],
+        },
+    };
+    fp.l10ns.si = Sinhala;
+    var si = fp.l10ns;
 
-flatpickr.l10ns.si.months = {
-	shorthand: ["ජන", "පෙබ", "මාර්", "අප්‍රේ", "මැයි", "ජුනි", "ජූලි", "අගෝ", "සැප්", "ඔක්", "නොවැ", "දෙසැ"],
-	longhand: ["ජනවාරි", "පෙබරවාරි", "මාර්තු", "අප්‍රේල්", "මැයි", "ජුනි", "ජූලි", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්"]
-};
+    exports.Sinhala = Sinhala;
+    exports.default = si;
 
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+})));

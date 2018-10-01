@@ -1,26 +1,73 @@
-/* Esperanto locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.eo = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.eo = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.eo.firstDayOfWeek = 1;
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Esperanto = {
+        firstDayOfWeek: 1,
+        rangeSeparator: " ĝis ",
+        weekAbbreviation: "Sem",
+        scrollTitle: "Rulumu por pligrandigi la valoron",
+        toggleTitle: "Klaku por ŝalti",
+        weekdays: {
+            shorthand: ["Dim", "Lun", "Mar", "Mer", "Ĵaŭ", "Ven", "Sab"],
+            longhand: [
+                "dimanĉo",
+                "lundo",
+                "mardo",
+                "merkredo",
+                "ĵaŭdo",
+                "vendredo",
+                "sabato",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Maj",
+                "Jun",
+                "Jul",
+                "Aŭg",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dec",
+            ],
+            longhand: [
+                "januaro",
+                "februaro",
+                "marto",
+                "aprilo",
+                "majo",
+                "junio",
+                "julio",
+                "aŭgusto",
+                "septembro",
+                "oktobro",
+                "novembro",
+                "decembro",
+            ],
+        },
+        ordinal: () => {
+            return "-a";
+        },
+    };
+    fp.l10ns.eo = Esperanto;
+    var eo = fp.l10ns;
 
-flatpickr.l10ns.eo.rangeSeparator = " ĝis ";
-flatpickr.l10ns.eo.weekAbbreviation = "Sem";
-flatpickr.l10ns.eo.scrollTitle = "Rulumu por pligrandigi la valoron";
-flatpickr.l10ns.eo.toggleTitle = "Klaku por ŝalti";
+    exports.Esperanto = Esperanto;
+    exports.default = eo;
 
-flatpickr.l10ns.eo.weekdays = {
-	shorthand: ["Dim", "Lun", "Mar", "Mer", "Ĵaŭ", "Ven", "Sab"],
-	longhand: ["dimanĉo", "lundo", "mardo", "merkredo", "ĵaŭdo", "vendredo", "sabato"]
-};
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.eo.months = {
-	shorthand: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aŭg", "Sep", "Okt", "Nov", "Dec"],
-	longhand: ["januaro", "februaro", "marto", "aprilo", "majo", "junio", "julio", "aŭgusto", "septembro", "oktobro", "novembro", "decembro"]
-};
-
-flatpickr.l10ns.eo.ordinal = function () {
-	return "-a";
-};
-
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

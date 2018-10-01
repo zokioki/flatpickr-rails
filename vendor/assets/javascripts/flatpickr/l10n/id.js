@@ -1,20 +1,61 @@
-/* Indonesian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.id = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.id = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.id.weekdays = {
-	shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
-	longhand: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Indonesian = {
+        weekdays: {
+            shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+            longhand: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+        },
+        months: {
+            shorthand: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Agu",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des",
+            ],
+            longhand: [
+                "Januari",
+                "Februari",
+                "Maret",
+                "April",
+                "Mei",
+                "Juni",
+                "Juli",
+                "Agustus",
+                "September",
+                "Oktober",
+                "November",
+                "Desember",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: () => {
+            return "";
+        },
+    };
+    fp.l10ns.id = Indonesian;
+    var id = fp.l10ns;
 
-flatpickr.l10ns.id.months = {
-	shorthand: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-	longhand: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-};
+    exports.Indonesian = Indonesian;
+    exports.default = id;
 
-flatpickr.l10ns.id.firstDayOfWeek = 1;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.id.ordinal = function () {
-	return "";
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

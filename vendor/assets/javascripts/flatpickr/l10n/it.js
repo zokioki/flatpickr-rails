@@ -1,25 +1,71 @@
-/* Italian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.it = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.it = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.it.weekdays = {
-	shorthand: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
-	longhand: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Italian = {
+        weekdays: {
+            shorthand: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+            longhand: [
+                "Domenica",
+                "Lunedì",
+                "Martedì",
+                "Mercoledì",
+                "Giovedì",
+                "Venerdì",
+                "Sabato",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Gen",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Mag",
+                "Giu",
+                "Lug",
+                "Ago",
+                "Set",
+                "Ott",
+                "Nov",
+                "Dic",
+            ],
+            longhand: [
+                "Gennaio",
+                "Febbraio",
+                "Marzo",
+                "Aprile",
+                "Maggio",
+                "Giugno",
+                "Luglio",
+                "Agosto",
+                "Settembre",
+                "Ottobre",
+                "Novembre",
+                "Dicembre",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: () => "°",
+        rangeSeparator: " al ",
+        weekAbbreviation: "Se",
+        scrollTitle: "Scrolla per aumentare",
+        toggleTitle: "Clicca per cambiare",
+    };
+    fp.l10ns.it = Italian;
+    var it = fp.l10ns;
 
-flatpickr.l10ns.it.months = {
-	shorthand: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
-	longhand: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"]
-};
+    exports.Italian = Italian;
+    exports.default = it;
 
-flatpickr.l10ns.it.firstDayOfWeek = 1;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.it.ordinal = "°";
-
-flatpickr.l10ns.it.weekAbbreviation = "Se";
-
-flatpickr.l10ns.it.scrollTitle = "Scrolla per aumentare";
-
-flatpickr.l10ns.it.toggleTitle = "Clicca per cambiare";
-
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

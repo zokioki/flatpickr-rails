@@ -1,27 +1,75 @@
-/* French locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.fr = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.fr = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.fr.firstDayOfWeek = 1;
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const French = {
+        firstDayOfWeek: 1,
+        weekdays: {
+            shorthand: ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"],
+            longhand: [
+                "dimanche",
+                "lundi",
+                "mardi",
+                "mercredi",
+                "jeudi",
+                "vendredi",
+                "samedi",
+            ],
+        },
+        months: {
+            shorthand: [
+                "janv",
+                "févr",
+                "mars",
+                "avr",
+                "mai",
+                "juin",
+                "juil",
+                "août",
+                "sept",
+                "oct",
+                "nov",
+                "déc",
+            ],
+            longhand: [
+                "janvier",
+                "février",
+                "mars",
+                "avril",
+                "mai",
+                "juin",
+                "juillet",
+                "août",
+                "septembre",
+                "octobre",
+                "novembre",
+                "décembre",
+            ],
+        },
+        ordinal: nth => {
+            if (nth > 1)
+                return "";
+            return "er";
+        },
+        rangeSeparator: " au ",
+        weekAbbreviation: "Sem",
+        scrollTitle: "Défiler pour augmenter la valeur",
+        toggleTitle: "Cliquer pour basculer",
+    };
+    fp.l10ns.fr = French;
+    var fr = fp.l10ns;
 
-flatpickr.l10ns.fr.weekdays = {
-	shorthand: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-	longhand: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
-};
+    exports.French = French;
+    exports.default = fr;
 
-flatpickr.l10ns.fr.months = {
-	shorthand: ["Janv", "Févr", "Mars", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
-	longhand: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
-};
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.fr.ordinal = function (nth) {
-	if (nth > 1) return "ème";
-
-	return "er";
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
-
-flatpickr.l10ns.fr.rangeSeparator = " au ";
-flatpickr.l10ns.fr.weekAbbreviation = "Sem";
-flatpickr.l10ns.fr.scrollTitle = "Défiler pour augmenter la valeur";
-flatpickr.l10ns.fr.toggleTitle = "Cliquer pour basculer";
+})));

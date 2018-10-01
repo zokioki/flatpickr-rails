@@ -1,29 +1,74 @@
-/* Greek locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.gr = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.gr = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.gr.weekdays = {
-	shorthand: ["Κυ", "Δε", "Τρ", "Τε", "Πέ", "Πα", "Σά"],
-	longhand: ["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Greek = {
+        weekdays: {
+            shorthand: ["Κυ", "Δε", "Τρ", "Τε", "Πέ", "Πα", "Σά"],
+            longhand: [
+                "Κυριακή",
+                "Δευτέρα",
+                "Τρίτη",
+                "Τετάρτη",
+                "Πέμπτη",
+                "Παρασκευή",
+                "Σάββατο",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Ιαν",
+                "Φεβ",
+                "Μάρ",
+                "Απρ",
+                "Μάι",
+                "Ιού",
+                "Ιού",
+                "Αύγ",
+                "Σεπ",
+                "Οκτ",
+                "Νοέ",
+                "Δεκ",
+            ],
+            longhand: [
+                "Ιανουάριος",
+                "Φεβρουάριος",
+                "Μάρτιος",
+                "Απρίλιος",
+                "Μάιος",
+                "Ιούνιος",
+                "Ιούλιος",
+                "Αύγουστος",
+                "Σεπτέμβριος",
+                "Οκτώβριος",
+                "Νοέμβριος",
+                "Δεκέμβριος",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: function () {
+            return "";
+        },
+        weekAbbreviation: "Εβδ",
+        rangeSeparator: " έως ",
+        scrollTitle: "Μετακυλήστε για προσαύξηση",
+        toggleTitle: "Κάντε κλικ για αλλαγή",
+        amPM: ["ΠΜ", "ΜΜ"],
+    };
+    fp.l10ns.gr = Greek;
+    var gr = fp.l10ns;
 
-flatpickr.l10ns.gr.months = {
-	shorthand: ["Ιαν", "Φεβ", "Μάρ", "Απρ", "Μάι", "Ιού", "Ιού", "Αύγ", "Σεπ", "Οκτ", "Νοέ", "Δεκ"],
-	longhand: ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"]
-};
+    exports.Greek = Greek;
+    exports.default = gr;
 
-flatpickr.l10ns.gr.firstDayOfWeek = 1;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.gr.ordinal = function () {
-	return "";
-};
-
-flatpickr.l10ns.gr.weekAbbreviation = "Εβδ";
-flatpickr.l10ns.gr.rangeSeparator = " έως ";
-flatpickr.l10ns.gr.scrollTitle = "Μετακυλήστε για προσαύξηση";
-flatpickr.l10ns.gr.toggleTitle = "Κάντε κλικ για αλλαγή";
-
-flatpickr.l10ns.gr.am = "ΠΜ";
-flatpickr.l10ns.gr.pm = "ΜΜ";
-
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

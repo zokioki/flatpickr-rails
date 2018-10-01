@@ -20,7 +20,7 @@ $ bundle
 
 In your application.css, add the following:
 
-```sass
+```
 *= require flatpickr
 
 /* Optionally, you can include any of the flatpickr themes by adding in their styles, like so: */
@@ -32,17 +32,36 @@ And in your application.js:
 ```js
 //= require flatpickr
 //
-// Locales can be included like so:
+// Locales can be included as well:
 //= require flatpickr/l10n/da
-```
 
-To initialize flatpickr:
-
-```js
 flatpickr('.your-selector');
 
 // if using jQuery
-$('.your-selector').flatpickr();
+// $('.your-selector').flatpickr();
+```
+
+#### Using Plugins
+
+Flatpickr provides plugins which expand the library's functionality. To include the `confirmDate` plugin, for example, you must require the necessary assets and specify the plugin during initialization:
+
+In your application.css:
+```
+*= require flatpickr
+*= require flatpickr/plugins/confirmDate/confirmDate
+```
+
+In application.js:
+```js
+//= require flatpickr
+//= require flatpickr/plugins/confirmDate/confirmDate
+
+flatpickr('.your-selector', {
+  enableTime: true,
+  plugins: [
+    new confirmDatePlugin({})
+  ]
+})
 ```
 
 See [flatpickr's docs](https://chmln.github.io/flatpickr/) for configuration and usage info.

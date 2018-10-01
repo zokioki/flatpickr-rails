@@ -1,16 +1,74 @@
-/* Turkish locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.tr = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.tr = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.tr.firstDayOfWeek = 1;
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Turkish = {
+        weekdays: {
+            shorthand: ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"],
+            longhand: [
+                "Pazar",
+                "Pazartesi",
+                "Salı",
+                "Çarşamba",
+                "Perşembe",
+                "Cuma",
+                "Cumartesi",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Oca",
+                "Şub",
+                "Mar",
+                "Nis",
+                "May",
+                "Haz",
+                "Tem",
+                "Ağu",
+                "Eyl",
+                "Eki",
+                "Kas",
+                "Ara",
+            ],
+            longhand: [
+                "Ocak",
+                "Şubat",
+                "Mart",
+                "Nisan",
+                "Mayıs",
+                "Haziran",
+                "Temmuz",
+                "Ağustos",
+                "Eylül",
+                "Ekim",
+                "Kasım",
+                "Aralık",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: () => {
+            return ".";
+        },
+        rangeSeparator: " - ",
+        weekAbbreviation: "Hf",
+        scrollTitle: "Artırmak için kaydırın",
+        toggleTitle: "Aç/Kapa",
+        amPM: ["ÖÖ", "ÖS"],
+    };
+    fp.l10ns.tr = Turkish;
+    var tr = fp.l10ns;
 
-flatpickr.l10ns.tr.weekdays = {
-	shorthand: ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"],
-	longhand: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]
-};
+    exports.Turkish = Turkish;
+    exports.default = tr;
 
-flatpickr.l10ns.tr.months = {
-	shorthand: ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
-	longhand: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+})));

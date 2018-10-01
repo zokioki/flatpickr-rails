@@ -1,21 +1,69 @@
-/* Romanian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.ro = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.ro = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.ro.weekdays = {
-	shorthand: ["Dum", "Lun", "Mar", "Mie", "Joi", "Vin", "Sam"],
-	longhand: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Romanian = {
+        weekdays: {
+            shorthand: ["Dum", "Lun", "Mar", "Mie", "Joi", "Vin", "Sam"],
+            longhand: [
+                "Duminică",
+                "Luni",
+                "Marți",
+                "Miercuri",
+                "Joi",
+                "Vineri",
+                "Sâmbătă",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Ian",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Mai",
+                "Iun",
+                "Iul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Noi",
+                "Dec",
+            ],
+            longhand: [
+                "Ianuarie",
+                "Februarie",
+                "Martie",
+                "Aprilie",
+                "Mai",
+                "Iunie",
+                "Iulie",
+                "August",
+                "Septembrie",
+                "Octombrie",
+                "Noiembrie",
+                "Decembrie",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: () => {
+            return "";
+        },
+    };
+    fp.l10ns.ro = Romanian;
+    var ro = fp.l10ns;
 
-flatpickr.l10ns.ro.months = {
-	shorthand: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"],
-	longhand: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"]
-};
+    exports.Romanian = Romanian;
+    exports.default = ro;
 
-flatpickr.l10ns.ro.firstDayOfWeek = 1;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.ro.ordinal = function () {
-	return "";
-};
-
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));

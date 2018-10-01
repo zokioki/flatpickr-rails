@@ -1,20 +1,68 @@
-/* Malaysian locals for flatpickr */
-var flatpickr = flatpickr || { l10ns: {} };
-flatpickr.l10ns.ms = {};
+/* flatpickr v4.5.2, @license MIT */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.ms = {})));
+}(this, (function (exports) { 'use strict';
 
-flatpickr.l10ns.ms.weekdays = {
-	shorthand: ["Min", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
-	longhand: ["Minggu", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"]
-};
+    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
+        ? window.flatpickr
+        : {
+            l10ns: {},
+        };
+    const Malaysian = {
+        weekdays: {
+            shorthand: ["Min", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
+            longhand: [
+                "Minggu",
+                "Isnin",
+                "Selasa",
+                "Rabu",
+                "Khamis",
+                "Jumaat",
+                "Sabtu",
+            ],
+        },
+        months: {
+            shorthand: [
+                "Jan",
+                "Feb",
+                "Mac",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Ogo",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dis",
+            ],
+            longhand: [
+                "Januari",
+                "Februari",
+                "Mac",
+                "April",
+                "Mei",
+                "Jun",
+                "Julai",
+                "Ogos",
+                "September",
+                "Oktober",
+                "November",
+                "Disember",
+            ],
+        },
+        firstDayOfWeek: 1,
+        ordinal: () => {
+            return "";
+        },
+    };
+    var ms = fp.l10ns;
 
-flatpickr.l10ns.ms.months = {
-	shorthand: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogo", "Sep", "Okt", "Nov", "Dis"],
-	longhand: ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"]
-};
+    exports.Malaysian = Malaysian;
+    exports.default = ms;
 
-flatpickr.l10ns.ms.firstDayOfWeek = 1;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-flatpickr.l10ns.ms.ordinal = function () {
-	return "";
-};
-if (typeof module !== "undefined") module.exports = flatpickr.l10ns;
+})));
