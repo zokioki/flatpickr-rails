@@ -35,10 +35,12 @@ And in your application.js:
 // Locales can be included as well:
 //= require flatpickr/l10n/da
 
-flatpickr('.your-selector');
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr('.your-selector');
 
-// if using jQuery
-// $('.your-selector').flatpickr();
+  // if using jQuery
+  // $('.your-selector').flatpickr();
+})
 ```
 
 #### Using Plugins
@@ -56,11 +58,13 @@ In application.js:
 //= require flatpickr
 //= require flatpickr/plugins/confirmDate/confirmDate
 
-flatpickr('.your-selector', {
-  enableTime: true,
-  plugins: [
-    new confirmDatePlugin({})
-  ]
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr('.your-selector', {
+    enableTime: true,
+    plugins: [
+      new confirmDatePlugin({})
+    ]
+  })
 })
 ```
 
