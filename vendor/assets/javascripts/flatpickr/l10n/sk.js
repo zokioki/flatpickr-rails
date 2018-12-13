@@ -5,59 +5,23 @@
     (factory((global.sk = {})));
 }(this, (function (exports) { 'use strict';
 
-    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
-        ? window.flatpickr
-        : {
-            l10ns: {},
-        };
-    const Slovak = {
-        weekdays: {
-            shorthand: ["Ned", "Pon", "Ut", "Str", "Štv", "Pia", "Sob"],
-            longhand: [
-                "Nedeľa",
-                "Pondelok",
-                "Utorok",
-                "Streda",
-                "Štvrtok",
-                "Piatok",
-                "Sobota",
-            ],
-        },
-        months: {
-            shorthand: [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "Máj",
-                "Jún",
-                "Júl",
-                "Aug",
-                "Sep",
-                "Okt",
-                "Nov",
-                "Dec",
-            ],
-            longhand: [
-                "Január",
-                "Február",
-                "Marec",
-                "Apríl",
-                "Máj",
-                "Jún",
-                "Júl",
-                "August",
-                "September",
-                "Október",
-                "November",
-                "December",
-            ],
-        },
-        firstDayOfWeek: 1,
-        rangeSeparator: " do ",
-        ordinal: function () {
-            return ".";
-        },
+    var fp = typeof window !== "undefined" && window.flatpickr !== undefined ? window.flatpickr : {
+      l10ns: {}
+    };
+    var Slovak = {
+      weekdays: {
+        shorthand: ["Ned", "Pon", "Ut", "Str", "Štv", "Pia", "Sob"],
+        longhand: ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok", "Sobota"]
+      },
+      months: {
+        shorthand: ["Jan", "Feb", "Mar", "Apr", "Máj", "Jún", "Júl", "Aug", "Sep", "Okt", "Nov", "Dec"],
+        longhand: ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"]
+      },
+      firstDayOfWeek: 1,
+      rangeSeparator: " do ",
+      ordinal: function ordinal() {
+        return ".";
+      }
     };
     fp.l10ns.sk = Slovak;
     var sk = fp.l10ns;

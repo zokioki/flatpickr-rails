@@ -5,58 +5,22 @@
     (factory((global.ms = {})));
 }(this, (function (exports) { 'use strict';
 
-    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
-        ? window.flatpickr
-        : {
-            l10ns: {},
-        };
-    const Malaysian = {
-        weekdays: {
-            shorthand: ["Min", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
-            longhand: [
-                "Minggu",
-                "Isnin",
-                "Selasa",
-                "Rabu",
-                "Khamis",
-                "Jumaat",
-                "Sabtu",
-            ],
-        },
-        months: {
-            shorthand: [
-                "Jan",
-                "Feb",
-                "Mac",
-                "Apr",
-                "Mei",
-                "Jun",
-                "Jul",
-                "Ogo",
-                "Sep",
-                "Okt",
-                "Nov",
-                "Dis",
-            ],
-            longhand: [
-                "Januari",
-                "Februari",
-                "Mac",
-                "April",
-                "Mei",
-                "Jun",
-                "Julai",
-                "Ogos",
-                "September",
-                "Oktober",
-                "November",
-                "Disember",
-            ],
-        },
-        firstDayOfWeek: 1,
-        ordinal: () => {
-            return "";
-        },
+    var fp = typeof window !== "undefined" && window.flatpickr !== undefined ? window.flatpickr : {
+      l10ns: {}
+    };
+    var Malaysian = {
+      weekdays: {
+        shorthand: ["Min", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
+        longhand: ["Minggu", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"]
+      },
+      months: {
+        shorthand: ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogo", "Sep", "Okt", "Nov", "Dis"],
+        longhand: ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"]
+      },
+      firstDayOfWeek: 1,
+      ordinal: function ordinal() {
+        return "";
+      }
     };
     var ms = fp.l10ns;
 

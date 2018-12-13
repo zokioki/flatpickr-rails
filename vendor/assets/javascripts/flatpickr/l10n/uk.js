@@ -5,55 +5,19 @@
     (factory((global.uk = {})));
 }(this, (function (exports) { 'use strict';
 
-    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
-        ? window.flatpickr
-        : {
-            l10ns: {},
-        };
-    const Ukrainian = {
-        firstDayOfWeek: 1,
-        weekdays: {
-            shorthand: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-            longhand: [
-                "Неділя",
-                "Понеділок",
-                "Вівторок",
-                "Середа",
-                "Четвер",
-                "П'ятниця",
-                "Субота",
-            ],
-        },
-        months: {
-            shorthand: [
-                "Січ",
-                "Лют",
-                "Бер",
-                "Кві",
-                "Тра",
-                "Чер",
-                "Лип",
-                "Сер",
-                "Вер",
-                "Жов",
-                "Лис",
-                "Гру",
-            ],
-            longhand: [
-                "Січень",
-                "Лютий",
-                "Березень",
-                "Квітень",
-                "Травень",
-                "Червень",
-                "Липень",
-                "Серпень",
-                "Вересень",
-                "Жовтень",
-                "Листопад",
-                "Грудень",
-            ],
-        },
+    var fp = typeof window !== "undefined" && window.flatpickr !== undefined ? window.flatpickr : {
+      l10ns: {}
+    };
+    var Ukrainian = {
+      firstDayOfWeek: 1,
+      weekdays: {
+        shorthand: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        longhand: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"]
+      },
+      months: {
+        shorthand: ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"],
+        longhand: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"]
+      }
     };
     fp.l10ns.uk = Ukrainian;
     var uk = fp.l10ns;
