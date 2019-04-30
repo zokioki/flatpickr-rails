@@ -1,61 +1,60 @@
-/* flatpickr v4.5.2, @license MIT */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.id = {})));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.id = {}));
+}(this, function (exports) { 'use strict';
 
-    const fp = typeof window !== "undefined" && window.flatpickr !== undefined
-        ? window.flatpickr
-        : {
-            l10ns: {},
-        };
-    const Indonesian = {
-        weekdays: {
-            shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
-            longhand: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
-        },
-        months: {
-            shorthand: [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "Mei",
-                "Jun",
-                "Jul",
-                "Agu",
-                "Sep",
-                "Okt",
-                "Nov",
-                "Des",
-            ],
-            longhand: [
-                "Januari",
-                "Februari",
-                "Maret",
-                "April",
-                "Mei",
-                "Juni",
-                "Juli",
-                "Agustus",
-                "September",
-                "Oktober",
-                "November",
-                "Desember",
-            ],
-        },
-        firstDayOfWeek: 1,
-        ordinal: () => {
-            return "";
-        },
-    };
-    fp.l10ns.id = Indonesian;
-    var id = fp.l10ns;
+  var fp = typeof window !== "undefined" && window.flatpickr !== undefined
+      ? window.flatpickr
+      : {
+          l10ns: {}
+      };
+  var Indonesian = {
+      weekdays: {
+          shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+          longhand: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+      },
+      months: {
+          shorthand: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "Mei",
+              "Jun",
+              "Jul",
+              "Agu",
+              "Sep",
+              "Okt",
+              "Nov",
+              "Des",
+          ],
+          longhand: [
+              "Januari",
+              "Februari",
+              "Maret",
+              "April",
+              "Mei",
+              "Juni",
+              "Juli",
+              "Agustus",
+              "September",
+              "Oktober",
+              "November",
+              "Desember",
+          ]
+      },
+      firstDayOfWeek: 1,
+      ordinal: function () {
+          return "";
+      }
+  };
+  fp.l10ns.id = Indonesian;
+  var id = fp.l10ns;
 
-    exports.Indonesian = Indonesian;
-    exports.default = id;
+  exports.Indonesian = Indonesian;
+  exports.default = id;
 
-    Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.de = {}));
+  (global = global || self, factory(global.fo = {}));
 }(this, function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
@@ -9,24 +9,24 @@
       : {
           l10ns: {}
       };
-  var German = {
+  var Faroese = {
       weekdays: {
-          shorthand: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+          shorthand: ["Sun", "Mán", "Týs", "Mik", "Hós", "Frí", "Ley"],
           longhand: [
-              "Sonntag",
-              "Montag",
-              "Dienstag",
-              "Mittwoch",
-              "Donnerstag",
-              "Freitag",
-              "Samstag",
+              "Sunnudagur",
+              "Mánadagur",
+              "Týsdagur",
+              "Mikudagur",
+              "Hósdagur",
+              "Fríggjadagur",
+              "Leygardagur",
           ]
       },
       months: {
           shorthand: [
               "Jan",
               "Feb",
-              "Mär",
+              "Mar",
               "Apr",
               "Mai",
               "Jun",
@@ -35,34 +35,38 @@
               "Sep",
               "Okt",
               "Nov",
-              "Dez",
+              "Des",
           ],
           longhand: [
               "Januar",
               "Februar",
-              "März",
-              "April",
+              "Mars",
+              "Apríl",
               "Mai",
               "Juni",
               "Juli",
               "August",
-              "September",
-              "Oktober",
-              "November",
-              "Dezember",
+              "Septembur",
+              "Oktobur",
+              "Novembur",
+              "Desembur",
           ]
       },
+      ordinal: function () {
+          return ".";
+      },
       firstDayOfWeek: 1,
-      weekAbbreviation: "KW",
-      rangeSeparator: " bis ",
-      scrollTitle: "Zum Ändern scrollen",
-      toggleTitle: "Zum Umschalten klicken"
+      rangeSeparator: " til ",
+      weekAbbreviation: "vika",
+      scrollTitle: "Rulla fyri at broyta",
+      toggleTitle: "Trýst fyri at skifta",
+      yearAriaLabel: "Ár"
   };
-  fp.l10ns.de = German;
-  var de = fp.l10ns;
+  fp.l10ns.fo = Faroese;
+  var fo = fp.l10ns;
 
-  exports.German = German;
-  exports.default = de;
+  exports.Faroese = Faroese;
+  exports.default = fo;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
