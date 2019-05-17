@@ -52,7 +52,7 @@ In application.js:
 //= require flatpickr
 //= require flatpickr/plugins/confirmDate/confirmDate
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
   flatpickr('.your-selector', {
     enableTime: true,
     plugins: [
