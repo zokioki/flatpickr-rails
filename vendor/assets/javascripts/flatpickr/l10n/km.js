@@ -1,24 +1,59 @@
-/* flatpickr v4.5.2, @license MIT */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.km = {})));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.km = {}));
+}(this, function (exports) { 'use strict';
 
-    var fp = typeof window !== "undefined" && window.flatpickr !== undefined ? window.flatpickr : {
-      l10ns: {}
-    };
-    var Khmer = {
+  var fp = typeof window !== "undefined" && window.flatpickr !== undefined
+      ? window.flatpickr
+      : {
+          l10ns: {}
+      };
+  var Khmer = {
       weekdays: {
-        shorthand: ["អាទិត្យ", "ចន្ទ", "អង្គារ", "ពុធ", "ព្រហស.", "សុក្រ", "សៅរ៍"],
-        longhand: ["អាទិត្យ", "ចន្ទ", "អង្គារ", "ពុធ", "ព្រហស្បតិ៍", "សុក្រ", "សៅរ៍"]
+          shorthand: ["អាទិត្យ", "ចន្ទ", "អង្គារ", "ពុធ", "ព្រហស.", "សុក្រ", "សៅរ៍"],
+          longhand: [
+              "អាទិត្យ",
+              "ចន្ទ",
+              "អង្គារ",
+              "ពុធ",
+              "ព្រហស្បតិ៍",
+              "សុក្រ",
+              "សៅរ៍",
+          ]
       },
       months: {
-        shorthand: ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"],
-        longhand: ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"]
+          shorthand: [
+              "មករា",
+              "កុម្ភះ",
+              "មីនា",
+              "មេសា",
+              "ឧសភា",
+              "មិថុនា",
+              "កក្កដា",
+              "សីហា",
+              "កញ្ញា",
+              "តុលា",
+              "វិច្ឆិកា",
+              "ធ្នូ",
+          ],
+          longhand: [
+              "មករា",
+              "កុម្ភះ",
+              "មីនា",
+              "មេសា",
+              "ឧសភា",
+              "មិថុនា",
+              "កក្កដា",
+              "សីហា",
+              "កញ្ញា",
+              "តុលា",
+              "វិច្ឆិកា",
+              "ធ្នូ",
+          ]
       },
-      ordinal: function ordinal() {
-        return "";
+      ordinal: function () {
+          return "";
       },
       firstDayOfWeek: 1,
       rangeSeparator: " ដល់ ",
@@ -26,13 +61,13 @@
       scrollTitle: "រំកិលដើម្បីបង្កើន",
       toggleTitle: "ចុចដើម្បីផ្លាស់ប្ដូរ",
       yearAriaLabel: "ឆ្នាំ"
-    };
-    fp.l10ns.km = Khmer;
-    var km = fp.l10ns;
+  };
+  fp.l10ns.km = Khmer;
+  var km = fp.l10ns;
 
-    exports.Khmer = Khmer;
-    exports.default = km;
+  exports.Khmer = Khmer;
+  exports.default = km;
 
-    Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
