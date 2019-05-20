@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.sk = {}));
+  (global = global || self, factory(global.is = {}));
 }(this, function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
@@ -9,17 +9,17 @@
       : {
           l10ns: {}
       };
-  var Slovak = {
+  var Icelandic = {
       weekdays: {
-          shorthand: ["Ned", "Pon", "Ut", "Str", "Štv", "Pia", "Sob"],
+          shorthand: ["Sun", "Mán", "Þri", "Mið", "Fim", "Fös", "Lau"],
           longhand: [
-              "Nedeľa",
-              "Pondelok",
-              "Utorok",
-              "Streda",
-              "Štvrtok",
-              "Piatok",
-              "Sobota",
+              "Sunnudagur",
+              "Mánudagur",
+              "Þriðjudagur",
+              "Miðvikudagur",
+              "Fimmtudagur",
+              "Föstudagur",
+              "Laugardagur",
           ]
       },
       months: {
@@ -28,41 +28,43 @@
               "Feb",
               "Mar",
               "Apr",
-              "Máj",
+              "Maí",
               "Jún",
               "Júl",
-              "Aug",
+              "Ágú",
               "Sep",
               "Okt",
-              "Nov",
-              "Dec",
+              "Nóv",
+              "Des",
           ],
           longhand: [
-              "Január",
-              "Február",
-              "Marec",
+              "Janúar",
+              "Febrúar",
+              "Mars",
               "Apríl",
-              "Máj",
-              "Jún",
-              "Júl",
-              "August",
+              "Maí",
+              "Júní",
+              "Júlí",
+              "Ágúst",
               "September",
               "Október",
-              "November",
-              "December",
+              "Nóvember",
+              "Desember",
           ]
       },
-      firstDayOfWeek: 1,
-      rangeSeparator: " do ",
       ordinal: function () {
           return ".";
-      }
+      },
+      firstDayOfWeek: 1,
+      rangeSeparator: " til ",
+      weekAbbreviation: "vika",
+      yearAriaLabel: "Ár"
   };
-  fp.l10ns.sk = Slovak;
-  var sk = fp.l10ns;
+  fp.l10ns.is = Icelandic;
+  var is = fp.l10ns;
 
-  exports.Slovak = Slovak;
-  exports.default = sk;
+  exports.Icelandic = Icelandic;
+  exports.default = is;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
