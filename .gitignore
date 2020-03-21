@@ -7,6 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-/flatpickr_source/
 /node_modules/
 package-lock.json
