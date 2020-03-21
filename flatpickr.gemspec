@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'flatpickr'
   spec.version       = Flatpickr::VERSION
   spec.authors       = ['Zoran']
-  spec.email         = ['zoran1991@gmail.com']
+  spec.email         = ['zspesic@gmail.com']
 
   spec.summary       = %q{Flatpickr packaged for use in Rails projects.}
   spec.homepage      = 'https://github.com/zokioki/flatpickr-rails'
