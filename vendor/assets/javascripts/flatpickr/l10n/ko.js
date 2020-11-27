@@ -2,12 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.ko = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
       ? window.flatpickr
       : {
-          l10ns: {}
+          l10ns: {},
       };
   var Korean = {
       weekdays: {
@@ -20,7 +20,7 @@
               "목요일",
               "금요일",
               "토요일",
-          ]
+          ],
       },
       months: {
           shorthand: [
@@ -50,12 +50,12 @@
               "10월",
               "11월",
               "12월",
-          ]
+          ],
       },
       ordinal: function () {
           return "일";
       },
-      rangeSeparator: " ~ "
+      rangeSeparator: " ~ ",
   };
   fp.l10ns.ko = Korean;
   var ko = fp.l10ns;
@@ -65,4 +65,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

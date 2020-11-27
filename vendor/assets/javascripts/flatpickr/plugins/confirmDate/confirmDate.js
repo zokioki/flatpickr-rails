@@ -2,21 +2,21 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     (global = global || self, global.confirmDatePlugin = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
     /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    Copyright (c) Microsoft Corporation.
 
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
 
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
     var __assign = function() {
@@ -30,25 +30,41 @@
         return __assign.apply(this, arguments);
     };
 
+    function getEventTarget(event) {
+        try {
+            if (typeof event.composedPath === "function") {
+                var path = event.composedPath();
+                return path[0];
+            }
+            return event.target;
+        }
+        catch (error) {
+            return event.target;
+        }
+    }
+
     var defaultConfig = {
         confirmIcon: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='17' height='17' viewBox='0 0 17 17'> <g> </g> <path d='M15.418 1.774l-8.833 13.485-4.918-4.386 0.666-0.746 4.051 3.614 8.198-12.515 0.836 0.548z' fill='#000000' /> </svg>",
         confirmText: "OK ",
         showAlways: false,
-        theme: "light"
+        theme: "light",
     };
     function confirmDatePlugin(pluginConfig) {
-        var config = __assign({}, defaultConfig, pluginConfig);
+        var config = __assign(__assign({}, defaultConfig), pluginConfig);
         var confirmContainer;
         var confirmButtonCSSClass = "flatpickr-confirm";
         return function (fp) {
             if (fp.config.noCalendar || fp.isMobile)
                 return {};
             return __assign({ onKeyDown: function (_, __, ___, e) {
-                    if (fp.config.enableTime && e.key === "Tab" && e.target === fp.amPM) {
+                    var eventTarget = getEventTarget(e);
+                    if (fp.config.enableTime &&
+                        e.key === "Tab" &&
+                        eventTarget === fp.amPM) {
                         e.preventDefault();
                         confirmContainer.focus();
                     }
-                    else if (e.key === "Enter" && e.target === confirmContainer)
+                    else if (e.key === "Enter" && eventTarget === confirmContainer)
                         fp.close();
                 },
                 onReady: function () {
@@ -73,7 +89,7 @@
                             localConfirmContainer)
                             return localConfirmContainer.classList.add("visible");
                         localConfirmContainer.classList.remove("visible");
-                    }
+                    },
                 }
                 : {}));
         };
@@ -81,4 +97,4 @@
 
     return confirmDatePlugin;
 
-}));
+})));

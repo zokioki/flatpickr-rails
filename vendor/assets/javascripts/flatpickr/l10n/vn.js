@@ -2,12 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.vn = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
       ? window.flatpickr
       : {
-          l10ns: {}
+          l10ns: {},
       };
   var Vietnamese = {
       weekdays: {
@@ -20,7 +20,7 @@
               "Thứ năm",
               "Thứ sáu",
               "Thứ bảy",
-          ]
+          ],
       },
       months: {
           shorthand: [
@@ -50,10 +50,10 @@
               "Tháng mười",
               "Tháng 11",
               "Tháng 12",
-          ]
+          ],
       },
       firstDayOfWeek: 1,
-      rangeSeparator: " đến "
+      rangeSeparator: " đến ",
   };
   fp.l10ns.vn = Vietnamese;
   var vn = fp.l10ns;
@@ -63,4 +63,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

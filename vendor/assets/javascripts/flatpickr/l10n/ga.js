@@ -2,12 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.ga = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
       ? window.flatpickr
       : {
-          l10ns: {}
+          l10ns: {},
       };
   var Irish = {
       firstDayOfWeek: 1,
@@ -21,7 +21,7 @@
               "Déardaoin",
               "Dé hAoine",
               "Dé Sathairn",
-          ]
+          ],
       },
       months: {
           shorthand: [
@@ -51,9 +51,9 @@
               "Deireadh Fómhair",
               "Samhain",
               "Nollaig",
-          ]
+          ],
       },
-      time_24hr: true
+      time_24hr: true,
   };
   fp.l10ns.hr = Irish;
   var ga = fp.l10ns;
@@ -63,4 +63,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

@@ -2,12 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.ar = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
       ? window.flatpickr
       : {
-          l10ns: {}
+          l10ns: {},
       };
   var Arabic = {
       weekdays: {
@@ -20,7 +20,7 @@
               "الخميس",
               "الجمعة",
               "السبت",
-          ]
+          ],
       },
       months: {
           shorthand: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
@@ -37,9 +37,9 @@
               "أكتوبر",
               "نوفمبر",
               "ديسمبر",
-          ]
+          ],
       },
-      rangeSeparator: " - "
+      rangeSeparator: " - ",
   };
   fp.l10ns.ar = Arabic;
   var ar = fp.l10ns;
@@ -49,4 +49,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

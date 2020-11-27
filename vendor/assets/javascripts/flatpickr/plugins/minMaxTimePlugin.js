@@ -2,9 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.minMaxTimePlugin = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
-  var pad = function (number) { return ("0" + number).slice(-2); };
+  var pad = function (number, length) {
+      if (length === void 0) { length = 2; }
+      return ("000" + number).slice(length * -1);
+  };
   var int = function (bool) { return (bool === true ? 1 : 0); };
 
   var monthToStr = function (monthNumber, shorthand, locale) { return locale.months[shorthand ? "shorthand" : "longhand"][monthNumber]; };
@@ -44,8 +47,8 @@
       W: function (date, _, options) {
           return options.getWeek(date);
       },
-      // full year e.g. 2016
-      Y: function (date) { return date.getFullYear(); },
+      // full year e.g. 2016, padded (0001-9999)
+      Y: function (date) { return pad(date.getFullYear(), 4); },
       // day in month, padded (01-30)
       d: function (date) { return pad(date.getDate()); },
       // hour from 1-12 (am/pm)
@@ -69,19 +72,21 @@
       // number of the day of the week
       w: function (date) { return date.getDay(); },
       // last two digits of year e.g. 16 for 2016
-      y: function (date) { return String(date.getFullYear()).substring(2); }
+      y: function (date) { return String(date.getFullYear()).substring(2); },
   };
 
   var defaults = {
       _disable: [],
       _enable: [],
       allowInput: false,
+      allowInvalidPreload: false,
       altFormat: "F j, Y",
       altInput: false,
       altInputClass: "form-control input",
       animate: typeof window === "object" &&
           window.navigator.userAgent.indexOf("MSIE") === -1,
       ariaDateFormat: "F j, Y",
+      autoFillDefaultTime: true,
       clickOpens: true,
       closeOnSelect: true,
       conjunction: ", ",
@@ -142,7 +147,7 @@
       static: false,
       time_24hr: false,
       weekNumbers: false,
-      wrap: false
+      wrap: false,
   };
 
   var english = {
@@ -156,7 +161,7 @@
               "Thursday",
               "Friday",
               "Saturday",
-          ]
+          ],
       },
       months: {
           shorthand: [
@@ -186,7 +191,7 @@
               "October",
               "November",
               "December",
-          ]
+          ],
       },
       daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       firstDayOfWeek: 0,
@@ -211,16 +216,17 @@
       toggleTitle: "Click to toggle",
       amPM: ["AM", "PM"],
       yearAriaLabel: "Year",
+      monthAriaLabel: "Month",
       hourAriaLabel: "Hour",
       minuteAriaLabel: "Minute",
-      time_24hr: false
+      time_24hr: false,
   };
 
   var createDateFormatter = function (_a) {
-      var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c;
+      var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c, _d = _a.isMobile, isMobile = _d === void 0 ? false : _d;
       return function (dateObj, frmt, overrideLocale) {
           var locale = overrideLocale || l10n;
-          if (config.formatDate !== undefined) {
+          if (config.formatDate !== undefined && !isMobile) {
               return config.formatDate(dateObj, frmt, locale);
           }
           return frmt
@@ -263,8 +269,8 @@
           tableDateFormat: config.tableDateFormat || "Y-m-d",
           defaults: {
               minTime: undefined,
-              maxTime: undefined
-          }
+              maxTime: undefined,
+          },
       };
       function findDateTimeLimit(date) {
           if (config.table !== undefined) {
@@ -278,7 +284,7 @@
                   state.formatDate = this.formatDate;
                   state.defaults = {
                       minTime: this.config.minTime && state.formatDate(this.config.minTime, "H:i"),
-                      maxTime: this.config.maxTime && state.formatDate(this.config.maxTime, "H:i")
+                      maxTime: this.config.maxTime && state.formatDate(this.config.maxTime, "H:i"),
                   };
                   fp.loadedPlugins.push("minMaxTime");
               },
@@ -302,7 +308,7 @@
                   else {
                       var newMinMax = state.defaults || {
                           minTime: undefined,
-                          maxTime: undefined
+                          maxTime: undefined,
                       };
                       this.set(newMinMax);
                       if (!latest)
@@ -316,11 +322,11 @@
                       }
                       //
                   }
-              }
+              },
           };
       };
   }
 
   return minMaxTimePlugin;
 
-}));
+})));

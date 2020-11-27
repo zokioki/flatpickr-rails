@@ -2,21 +2,21 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     (global = global || self, global.monthSelectPlugin = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
     /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    Copyright (c) Microsoft Corporation.
 
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
 
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
     var __assign = function() {
@@ -32,14 +32,27 @@
 
     var monthToStr = function (monthNumber, shorthand, locale) { return locale.months[shorthand ? "shorthand" : "longhand"][monthNumber]; };
 
+    function getEventTarget(event) {
+        try {
+            if (typeof event.composedPath === "function") {
+                var path = event.composedPath();
+                return path[0];
+            }
+            return event.target;
+        }
+        catch (error) {
+            return event.target;
+        }
+    }
+
     var defaultConfig = {
         shorthand: false,
         dateFormat: "F Y",
         altFormat: "F Y",
-        theme: "light"
+        theme: "light",
     };
     function monthSelectPlugin(pluginConfig) {
-        var config = __assign({}, defaultConfig, pluginConfig);
+        var config = __assign(__assign({}, defaultConfig), pluginConfig);
         return function (fp) {
             fp.config.dateFormat = config.dateFormat;
             fp.config.altFormat = config.altFormat;
@@ -57,12 +70,24 @@
                 }
             }
             function addListeners() {
-                fp._bind(fp.prevMonthNav, "click", function () {
-                    fp.currentYear -= 1;
+                fp._bind(fp.prevMonthNav, "click", function (e) {
+                    var _a;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var selectedMonth = (_a = fp.rContainer) === null || _a === void 0 ? void 0 : _a.querySelector(".flatpickr-monthSelect-month.selected").dateObj.getMonth();
+                    if (selectedMonth === 0) {
+                        fp.currentYear--;
+                    }
                     selectYear();
                 });
-                fp._bind(fp.nextMonthNav, "mousedown", function () {
-                    fp.currentYear += 1;
+                fp._bind(fp.nextMonthNav, "click", function (e) {
+                    var _a;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var selectedMonth = (_a = fp.rContainer) === null || _a === void 0 ? void 0 : _a.querySelector(".flatpickr-monthSelect-month.selected").dateObj.getMonth();
+                    if (selectedMonth === 11) {
+                        fp.currentYear++;
+                    }
                     selectYear();
                 });
             }
@@ -80,7 +105,8 @@
                     month.tabIndex = -1;
                     month.addEventListener("click", selectMonth);
                     self.monthsContainer.appendChild(month);
-                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
+                        (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
                         month.classList.add("disabled");
                     }
                 }
@@ -111,13 +137,14 @@
                     }
                     fp.currentYear = selectedDate.getFullYear();
                     fp.currentYearElement.value = String(fp.currentYear);
-                    setCurrentlySelected();
+                    fp.currentMonth = selectedDate.getMonth();
                 }
                 if (fp.rContainer) {
                     var months = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month");
                     months.forEach(function (month) {
                         month.dateObj.setFullYear(fp.currentYear);
-                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
+                            (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
                             month.classList.add("disabled");
                         }
                         else {
@@ -125,12 +152,15 @@
                         }
                     });
                 }
+                setCurrentlySelected();
             }
             function selectMonth(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                if (e.target instanceof Element && !e.target.classList.contains("disabled")) {
-                    setMonth(e.target.dateObj);
+                var eventTarget = getEventTarget(e);
+                if (eventTarget instanceof Element &&
+                    !eventTarget.classList.contains("disabled")) {
+                    setMonth(eventTarget.dateObj);
                     fp.close();
                 }
             }
@@ -145,7 +175,7 @@
                 37: -1,
                 39: 1,
                 40: 3,
-                38: -3
+                38: -3,
             };
             function onKeyDown(_, __, ___, e) {
                 var shouldMove = shifts[e.keyCode] !== undefined;
@@ -193,11 +223,11 @@
                         fp.loadedPlugins.push("monthSelect");
                     },
                 ],
-                onDestroy: destroyPluginInstance
+                onDestroy: destroyPluginInstance,
             };
         };
     }
 
     return monthSelectPlugin;
 
-}));
+})));

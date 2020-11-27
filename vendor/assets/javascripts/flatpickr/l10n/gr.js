@@ -2,12 +2,12 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.gr = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var fp = typeof window !== "undefined" && window.flatpickr !== undefined
       ? window.flatpickr
       : {
-          l10ns: {}
+          l10ns: {},
       };
   var Greek = {
       weekdays: {
@@ -20,7 +20,7 @@
               "Πέμπτη",
               "Παρασκευή",
               "Σάββατο",
-          ]
+          ],
       },
       months: {
           shorthand: [
@@ -50,7 +50,7 @@
               "Οκτώβριος",
               "Νοέμβριος",
               "Δεκέμβριος",
-          ]
+          ],
       },
       firstDayOfWeek: 1,
       ordinal: function () {
@@ -60,7 +60,7 @@
       rangeSeparator: " έως ",
       scrollTitle: "Μετακυλήστε για προσαύξηση",
       toggleTitle: "Κάντε κλικ για αλλαγή",
-      amPM: ["ΠΜ", "ΜΜ"]
+      amPM: ["ΠΜ", "ΜΜ"],
   };
   fp.l10ns.gr = Greek;
   var gr = fp.l10ns;
@@ -70,4 +70,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

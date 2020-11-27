@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.labelPlugin = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function labelPlugin() {
       return function (fp) {
@@ -21,11 +21,11 @@
                       fp.altInput.id = id;
                   }
                   fp.loadedPlugins.push("labelPlugin");
-              }
+              },
           };
       };
   }
 
   return labelPlugin;
 
-}));
+})));
