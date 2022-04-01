@@ -57,6 +57,7 @@
       rangeSeparator: " bis ",
       scrollTitle: "Zum Ändern scrollen",
       toggleTitle: "Zum Umschalten klicken",
+      time_24hr: true,
   };
   fp.l10ns.at = Austria;
   var at = fp.l10ns;

@@ -18,7 +18,7 @@
   }
 
   if (typeof window.CustomEvent !== "function") {
-      function CustomEvent(typeArg, eventInitDict) {
+      var CustomEvent = function (typeArg, eventInitDict) {
           eventInitDict = eventInitDict || {
               bubbles: false,
               cancelable: false,
@@ -27,7 +27,7 @@
           var evt = document.createEvent("CustomEvent");
           evt.initCustomEvent(typeArg, eventInitDict.bubbles, eventInitDict.cancelable, eventInitDict.detail);
           return evt;
-      }
+      };
       CustomEvent.prototype = window.Event.prototype;
       window.CustomEvent = CustomEvent;
   }
@@ -57,24 +57,32 @@
                   if (fp.timeContainer) {
                       fp.timeContainer.addEventListener("wheel", scroll);
                   }
-                  fp.yearElements.forEach(function (yearElem) {
-                      return yearElem.addEventListener("wheel", scroll);
-                  });
-                  fp.monthElements.forEach(function (monthElem) {
-                      return monthElem.addEventListener("wheel", monthScroller);
-                  });
+                  if (fp.yearElements) {
+                      fp.yearElements.forEach(function (yearElem) {
+                          return yearElem.addEventListener("wheel", scroll);
+                      });
+                  }
+                  if (fp.monthElements) {
+                      fp.monthElements.forEach(function (monthElem) {
+                          return monthElem.addEventListener("wheel", monthScroller);
+                      });
+                  }
                   fp.loadedPlugins.push("scroll");
               },
               onDestroy: function () {
                   if (fp.timeContainer) {
                       fp.timeContainer.removeEventListener("wheel", scroll);
                   }
-                  fp.yearElements.forEach(function (yearElem) {
-                      return yearElem.removeEventListener("wheel", scroll);
-                  });
-                  fp.monthElements.forEach(function (monthElem) {
-                      return monthElem.removeEventListener("wheel", monthScroller);
-                  });
+                  if (fp.yearElements) {
+                      fp.yearElements.forEach(function (yearElem) {
+                          return yearElem.removeEventListener("wheel", scroll);
+                      });
+                  }
+                  if (fp.monthElements) {
+                      fp.monthElements.forEach(function (monthElem) {
+                          return monthElem.removeEventListener("wheel", monthScroller);
+                      });
+                  }
               },
           };
       };

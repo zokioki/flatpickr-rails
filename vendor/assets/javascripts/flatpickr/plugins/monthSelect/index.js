@@ -32,6 +32,10 @@
 
     var monthToStr = function (monthNumber, shorthand, locale) { return locale.months[shorthand ? "shorthand" : "longhand"][monthNumber]; };
 
+    function clearNode(node) {
+        while (node.firstChild)
+            node.removeChild(node.firstChild);
+    }
     function getEventTarget(event) {
         try {
             if (typeof event.composedPath === "function") {
@@ -58,10 +62,9 @@
             fp.config.altFormat = config.altFormat;
             var self = { monthsContainer: null };
             function clearUnnecessaryDOMElements() {
-                if (!fp.rContainer || !fp.daysContainer || !fp.weekdayContainer)
+                if (!fp.rContainer)
                     return;
-                fp.rContainer.removeChild(fp.daysContainer);
-                fp.rContainer.removeChild(fp.weekdayContainer);
+                clearNode(fp.rContainer);
                 for (var index = 0; index < fp.monthElements.length; index++) {
                     var element = fp.monthElements[index];
                     if (!element.parentNode)
@@ -69,49 +72,61 @@
                     element.parentNode.removeChild(element);
                 }
             }
-            function addListeners() {
+            function build() {
+                if (!fp.rContainer)
+                    return;
+                self.monthsContainer = fp._createElement("div", "flatpickr-monthSelect-months");
+                self.monthsContainer.tabIndex = -1;
+                buildMonths();
+                fp.rContainer.appendChild(self.monthsContainer);
+                fp.calendarContainer.classList.add("flatpickr-monthSelect-theme-" + config.theme);
+            }
+            function buildMonths() {
+                if (!self.monthsContainer)
+                    return;
+                clearNode(self.monthsContainer);
+                var frag = document.createDocumentFragment();
+                for (var i = 0; i < 12; i++) {
+                    var month = fp.createDay("flatpickr-monthSelect-month", new Date(fp.currentYear, i), 0, i);
+                    if (month.dateObj.getMonth() === new Date().getMonth() &&
+                        month.dateObj.getFullYear() === new Date().getFullYear())
+                        month.classList.add("today");
+                    month.textContent = monthToStr(i, config.shorthand, fp.l10n);
+                    month.addEventListener("click", selectMonth);
+                    frag.appendChild(month);
+                }
+                self.monthsContainer.appendChild(frag);
+            }
+            function bindEvents() {
                 fp._bind(fp.prevMonthNav, "click", function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     fp.changeYear(fp.currentYear - 1);
                     selectYear();
+                    buildMonths();
                 });
                 fp._bind(fp.nextMonthNav, "click", function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     fp.changeYear(fp.currentYear + 1);
                     selectYear();
+                    buildMonths();
                 });
-            }
-            function addMonths() {
-                if (!fp.rContainer)
-                    return;
-                self.monthsContainer = fp._createElement("div", "flatpickr-monthSelect-months");
-                self.monthsContainer.tabIndex = -1;
-                fp.calendarContainer.classList.add("flatpickr-monthSelect-theme-" + config.theme);
-                for (var i = 0; i < 12; i++) {
-                    var month = fp._createElement("span", "flatpickr-monthSelect-month");
-                    month.dateObj = new Date(fp.currentYear, i);
-                    month.$i = i;
-                    month.textContent = monthToStr(i, config.shorthand, fp.l10n);
-                    month.tabIndex = -1;
-                    month.addEventListener("click", selectMonth);
-                    self.monthsContainer.appendChild(month);
-                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
-                        (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-                        month.classList.add("disabled");
-                    }
-                }
-                fp.rContainer.appendChild(self.monthsContainer);
+                fp._bind(self.monthsContainer, "mouseover", function (e) {
+                    if (fp.config.mode === "range")
+                        fp.onMouseOver(getEventTarget(e), "flatpickr-monthSelect-month");
+                });
             }
             function setCurrentlySelected() {
                 if (!fp.rContainer)
+                    return;
+                if (!fp.selectedDates.length)
                     return;
                 var currentlySelected = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month.selected");
                 for (var index = 0; index < currentlySelected.length; index++) {
                     currentlySelected[index].classList.remove("selected");
                 }
-                var targetMonth = (fp.selectedDates[0] || new Date()).getMonth();
+                var targetMonth = fp.selectedDates[0].getMonth();
                 var month = fp.rContainer.querySelector(".flatpickr-monthSelect-month:nth-child(" + (targetMonth + 1) + ")");
                 if (month) {
                     month.classList.add("selected");
@@ -137,10 +152,10 @@
                         month.dateObj.setFullYear(fp.currentYear);
                         if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
                             (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-                            month.classList.add("disabled");
+                            month.classList.add("flatpickr-disabled");
                         }
                         else {
-                            month.classList.remove("disabled");
+                            month.classList.remove("flatpickr-disabled");
                         }
                     });
                 }
@@ -150,16 +165,37 @@
                 e.preventDefault();
                 e.stopPropagation();
                 var eventTarget = getEventTarget(e);
-                if (eventTarget instanceof Element &&
-                    !eventTarget.classList.contains("disabled")) {
-                    setMonth(eventTarget.dateObj);
-                    fp.close();
+                if (!(eventTarget instanceof Element))
+                    return;
+                if (eventTarget.classList.contains("flatpickr-disabled"))
+                    return;
+                if (eventTarget.classList.contains("notAllowed"))
+                    return; // necessary??
+                setMonth(eventTarget.dateObj);
+                if (fp.config.closeOnSelect) {
+                    var single = fp.config.mode === "single";
+                    var range = fp.config.mode === "range" && fp.selectedDates.length === 2;
+                    if (single || range)
+                        fp.close();
                 }
             }
             function setMonth(date) {
-                var selectedDate = new Date(date);
-                selectedDate.setFullYear(fp.currentYear);
-                fp.setDate(selectedDate, true);
+                var selectedDate = new Date(fp.currentYear, date.getMonth(), date.getDate());
+                switch (fp.config.mode) {
+                    case "single":
+                        fp.selectedDates = [selectedDate];
+                        break;
+                    case "range":
+                        if (fp.selectedDates.length === 2) {
+                            fp.clear(false, false);
+                            buildMonths();
+                        }
+                        fp.selectedDates.push(selectedDate);
+                        fp.selectedDates.sort(function (a, b) { return a.getTime() - b.getTime(); });
+                        break;
+                }
+                fp.latestSelectedDateObj = selectedDate;
+                fp.updateValue();
                 setCurrentlySelected();
             }
             var shifts = {
@@ -190,6 +226,27 @@
                     setMonth(document.activeElement.dateObj);
                 }
             }
+            function closeHook() {
+                var _a;
+                if (((_a = fp.config) === null || _a === void 0 ? void 0 : _a.mode) === "range" &&
+                    fp.selectedDates.length === 1)
+                    fp.clear(false);
+                if (!fp.selectedDates.length)
+                    buildMonths();
+            }
+            // Help the prev/next year nav honor config.minDate (see 3fa5a69)
+            function stubCurrentMonth() {
+                config._stubbedCurrentMonth = fp._initialDate.getMonth();
+                fp._initialDate.setMonth(0);
+                fp.currentMonth = 0;
+            }
+            function unstubCurrentMonth() {
+                if (!config._stubbedCurrentMonth)
+                    return;
+                fp._initialDate.setMonth(config._stubbedCurrentMonth);
+                fp.currentMonth = config._stubbedCurrentMonth;
+                delete config._stubbedCurrentMonth;
+            }
             function destroyPluginInstance() {
                 if (self.monthsContainer !== null) {
                     var months = self.monthsContainer.querySelectorAll(".flatpickr-monthSelect-month");
@@ -200,24 +257,28 @@
             }
             return {
                 onParseConfig: function () {
-                    fp.config.mode = "single";
                     fp.config.enableTime = false;
                 },
                 onValueUpdate: setCurrentlySelected,
                 onKeyDown: onKeyDown,
                 onReady: [
-                    function () {
-                        fp.currentMonth = 0;
-                    },
+                    stubCurrentMonth,
                     clearUnnecessaryDOMElements,
-                    addListeners,
-                    addMonths,
+                    build,
+                    bindEvents,
                     setCurrentlySelected,
                     function () {
+                        fp.config.onClose.push(closeHook);
                         fp.loadedPlugins.push("monthSelect");
                     },
                 ],
-                onDestroy: destroyPluginInstance,
+                onDestroy: [
+                    unstubCurrentMonth,
+                    destroyPluginInstance,
+                    function () {
+                        fp.config.onClose = fp.config.onClose.filter(function (hook) { return hook !== closeHook; });
+                    },
+                ],
             };
         };
     }

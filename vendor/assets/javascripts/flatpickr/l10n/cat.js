@@ -70,6 +70,7 @@
           }
       },
       firstDayOfWeek: 1,
+      rangeSeparator: " a ",
       time_24hr: true,
   };
   fp.l10ns.cat = fp.l10ns.ca = Catalan;
