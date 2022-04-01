@@ -1,4 +1,4 @@
-/* flatpickr v4.6.10, @license MIT */
+/* flatpickr v4.6.11, @license MIT */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -715,17 +715,10 @@
             if (e !== undefined && e.type !== "blur") {
                 timeWrapper(e);
             }
-            var valueFromInput = self._input.value;
-            var dateFromInput = self.parseDate(valueFromInput);
-            var latestDate = self.latestSelectedDateObj;
-            if (valueFromInput && latestDate && (dateFromInput === null || dateFromInput === void 0 ? void 0 : dateFromInput.getTime()) !== (latestDate === null || latestDate === void 0 ? void 0 : latestDate.getTime())) {
-                setDate(dateFromInput);
-            }
-            else {
-                setHoursFromInputs();
-            }
+            var prevValue = self._input.value;
+            setHoursFromInputs();
             updateValue();
-            if (self._input.value !== valueFromInput) {
+            if (self._input.value !== prevValue) {
                 self._debouncedChange();
             }
         }
@@ -807,7 +800,7 @@
          */
         function setHoursFromDate(dateObj) {
             var date = dateObj || self.latestSelectedDateObj;
-            if (date) {
+            if (date && date instanceof Date) {
                 setHours(date.getHours(), date.getMinutes(), date.getSeconds());
             }
         }
@@ -1561,19 +1554,15 @@
                         e.path.indexOf &&
                         (~e.path.indexOf(self.input) ||
                             ~e.path.indexOf(self.altInput)));
-                var lostFocus = e.type === "blur"
-                    ? isInput &&
-                        e.relatedTarget &&
-                        !isCalendarElem(e.relatedTarget)
-                    : !isInput &&
-                        !isCalendarElement &&
-                        !isCalendarElem(e.relatedTarget);
+                var lostFocus = !isInput &&
+                    !isCalendarElement &&
+                    !isCalendarElem(e.relatedTarget);
                 var isIgnored = !self.config.ignoredFocusElements.some(function (elem) {
                     return elem.contains(eventTarget_1);
                 });
                 if (lostFocus && isIgnored) {
                     if (self.config.allowInput) {
-                        self.setDate(self._input.value, true, self.config.altInput
+                        self.setDate(self._input.value, false, self.config.altInput
                             ? self.config.altFormat
                             : self.config.dateFormat);
                     }
@@ -2516,7 +2505,8 @@
         }
         function isDateSelected(date) {
             for (var i = 0; i < self.selectedDates.length; i++) {
-                if (compareDates(self.selectedDates[i], date) === 0)
+                var selectedDate = self.selectedDates[i];
+                if (selectedDate instanceof Date && compareDates(selectedDate, date) === 0)
                     return "" + i;
             }
             return false;
