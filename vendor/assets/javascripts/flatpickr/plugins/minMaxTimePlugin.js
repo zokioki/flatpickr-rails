@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.minMaxTimePlugin = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.minMaxTimePlugin = factory());
 }(this, (function () { 'use strict';
 
   var pad = function (number, length) {
@@ -77,7 +77,6 @@
 
   var defaults = {
       _disable: [],
-      _enable: [],
       allowInput: false,
       allowInvalidPreload: false,
       altFormat: "F j, Y",
@@ -96,7 +95,6 @@
       defaultSeconds: 0,
       disable: [],
       disableMobile: false,
-      enable: [],
       enableSeconds: false,
       enableTime: false,
       errorHandler: function (err) {

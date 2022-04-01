@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = global || self, factory(global.index = {}));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.index = {}));
 }(this, (function (exports) { 'use strict';
 
     /*! *****************************************************************************
@@ -1727,7 +1727,11 @@
         },
         time_24hr: true,
         rangeSeparator: " から ",
-        firstDayOfWeek: 1,
+        monthAriaLabel: "月",
+        amPM: ["午前", "午後"],
+        yearAriaLabel: "年",
+        hourAriaLabel: "時間",
+        minuteAriaLabel: "分",
     };
     fp$r.l10ns.ja = Japanese;
     fp$r.l10ns;
@@ -3400,8 +3404,8 @@
                 "Tháng tám",
                 "Tháng chín",
                 "Tháng mười",
-                "Tháng 11",
-                "Tháng 12",
+                "Tháng mười một",
+                "Tháng mười hai",
             ],
         },
         firstDayOfWeek: 1,

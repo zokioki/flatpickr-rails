@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.monthSelectPlugin = factory());
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.monthSelectPlugin = factory());
 }(this, (function () { 'use strict';
 
     /*! *****************************************************************************
@@ -71,23 +71,15 @@
             }
             function addListeners() {
                 fp._bind(fp.prevMonthNav, "click", function (e) {
-                    var _a;
                     e.preventDefault();
                     e.stopPropagation();
-                    var selectedMonth = (_a = fp.rContainer) === null || _a === void 0 ? void 0 : _a.querySelector(".flatpickr-monthSelect-month.selected").dateObj.getMonth();
-                    if (selectedMonth === 0) {
-                        fp.currentYear--;
-                    }
+                    fp.changeYear(fp.currentYear - 1);
                     selectYear();
                 });
                 fp._bind(fp.nextMonthNav, "click", function (e) {
-                    var _a;
                     e.preventDefault();
                     e.stopPropagation();
-                    var selectedMonth = (_a = fp.rContainer) === null || _a === void 0 ? void 0 : _a.querySelector(".flatpickr-monthSelect-month.selected").dateObj.getMonth();
-                    if (selectedMonth === 11) {
-                        fp.currentYear++;
-                    }
+                    fp.changeYear(fp.currentYear + 1);
                     selectYear();
                 });
             }
@@ -119,7 +111,8 @@
                 for (var index = 0; index < currentlySelected.length; index++) {
                     currentlySelected[index].classList.remove("selected");
                 }
-                var month = fp.rContainer.querySelector(".flatpickr-monthSelect-month:nth-child(" + (fp.currentMonth + 1) + ")");
+                var targetMonth = (fp.selectedDates[0] || new Date()).getMonth();
+                var month = fp.rContainer.querySelector(".flatpickr-monthSelect-month:nth-child(" + (targetMonth + 1) + ")");
                 if (month) {
                     month.classList.add("selected");
                 }
@@ -136,9 +129,8 @@
                         selectedDate = fp.config.maxDate;
                     }
                     fp.currentYear = selectedDate.getFullYear();
-                    fp.currentYearElement.value = String(fp.currentYear);
-                    fp.currentMonth = selectedDate.getMonth();
                 }
+                fp.currentYearElement.value = String(fp.currentYear);
                 if (fp.rContainer) {
                     var months = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month");
                     months.forEach(function (month) {
@@ -167,7 +159,6 @@
             function setMonth(date) {
                 var selectedDate = new Date(date);
                 selectedDate.setFullYear(fp.currentYear);
-                fp.currentMonth = selectedDate.getMonth();
                 fp.setDate(selectedDate, true);
                 setCurrentlySelected();
             }
@@ -215,6 +206,9 @@
                 onValueUpdate: setCurrentlySelected,
                 onKeyDown: onKeyDown,
                 onReady: [
+                    function () {
+                        fp.currentMonth = 0;
+                    },
                     clearUnnecessaryDOMElements,
                     addListeners,
                     addMonths,
