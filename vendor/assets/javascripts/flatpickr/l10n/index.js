@@ -502,7 +502,15 @@
         };
     var Kurdish = {
         weekdays: {
-            shorthand: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"],
+            shorthand: [
+                "یەکشەممە",
+                "دووشەممە",
+                "سێشەممە",
+                "چوارشەممە",
+                "پێنجشەممە",
+                "هەینی",
+                "شەممە",
+            ],
             longhand: [
                 "یەکشەممە",
                 "دووشەممە",
@@ -1587,15 +1595,7 @@
         };
     var Armenian = {
         weekdays: {
-            shorthand: [
-                "Կիր",
-                "Երկ",
-                "Երք",
-                "Չրք",
-                "Հնգ",
-                "Ուրբ",
-                "Շբթ",
-            ],
+            shorthand: ["Կիր", "Երկ", "Երք", "Չրք", "Հնգ", "Ուրբ", "Շբթ"],
             longhand: [
                 "Կիրակի",
                 "Եկուշաբթի",
@@ -2353,15 +2353,7 @@
     var Malaysian = {
         weekdays: {
             shorthand: ["Aha", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"],
-            longhand: [
-                "Ahad",
-                "Isnin",
-                "Selasa",
-                "Rabu",
-                "Khamis",
-                "Jumaat",
-                "Sabtu",
-            ],
+            longhand: ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"],
         },
         months: {
             shorthand: [
@@ -2520,62 +2512,62 @@
     fp$E.l10ns.nl = Dutch;
     fp$E.l10ns;
 
-    var fp$F = typeof window !== 'undefined' && window.flatpickr !== undefined
+    var fp$F = typeof window !== "undefined" && window.flatpickr !== undefined
         ? window.flatpickr
         : {
             l10ns: {},
         };
     var NorwegianNynorsk = {
         weekdays: {
-            shorthand: ['Sø.', 'Må.', 'Ty.', 'On.', 'To.', 'Fr.', 'La.'],
+            shorthand: ["Sø.", "Må.", "Ty.", "On.", "To.", "Fr.", "La."],
             longhand: [
-                'Søndag',
-                'Måndag',
-                'Tysdag',
-                'Onsdag',
-                'Torsdag',
-                'Fredag',
-                'Laurdag',
+                "Søndag",
+                "Måndag",
+                "Tysdag",
+                "Onsdag",
+                "Torsdag",
+                "Fredag",
+                "Laurdag",
             ],
         },
         months: {
             shorthand: [
-                'Jan',
-                'Feb',
-                'Mars',
-                'Apr',
-                'Mai',
-                'Juni',
-                'Juli',
-                'Aug',
-                'Sep',
-                'Okt',
-                'Nov',
-                'Des',
+                "Jan",
+                "Feb",
+                "Mars",
+                "Apr",
+                "Mai",
+                "Juni",
+                "Juli",
+                "Aug",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des",
             ],
             longhand: [
-                'Januar',
-                'Februar',
-                'Mars',
-                'April',
-                'Mai',
-                'Juni',
-                'Juli',
-                'August',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
+                "Januar",
+                "Februar",
+                "Mars",
+                "April",
+                "Mai",
+                "Juni",
+                "Juli",
+                "August",
+                "September",
+                "Oktober",
+                "November",
+                "Desember",
             ],
         },
         firstDayOfWeek: 1,
-        rangeSeparator: ' til ',
-        weekAbbreviation: 'Veke',
-        scrollTitle: 'Scroll for å endre',
-        toggleTitle: 'Klikk for å veksle',
+        rangeSeparator: " til ",
+        weekAbbreviation: "Veke",
+        scrollTitle: "Scroll for å endre",
+        toggleTitle: "Klikk for å veksle",
         time_24hr: true,
         ordinal: function () {
-            return '.';
+            return ".";
         },
     };
     fp$F.l10ns.nn = NorwegianNynorsk;
@@ -3147,6 +3139,13 @@
                 "Dhjetor",
             ],
         },
+        firstDayOfWeek: 1,
+        rangeSeparator: " deri ",
+        weekAbbreviation: "Java",
+        yearAriaLabel: "Viti",
+        monthAriaLabel: "Muaji",
+        hourAriaLabel: "Ora",
+        minuteAriaLabel: "Minuta",
         time_24hr: true,
     };
     fp$P.l10ns.sq = Albanian;
@@ -3258,7 +3257,7 @@
                 "december",
             ],
         },
-        rangeSeparator: ' till ',
+        rangeSeparator: " till ",
         time_24hr: true,
         ordinal: function () {
             return ".";

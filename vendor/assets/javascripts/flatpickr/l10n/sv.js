@@ -54,7 +54,7 @@
               "december",
           ],
       },
-      rangeSeparator: ' till ',
+      rangeSeparator: " till ",
       time_24hr: true,
       ordinal: function () {
           return ".";
